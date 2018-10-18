@@ -1,13 +1,18 @@
 <?php
-$repo_dir = '~/project';
-$onbranch = 'master';
+require 'vendor/autoload.php';
+
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
+$repo_dir = getenv('DIR');
+$onbranch = getenv('BRANCH');
 
 $update = false;
 $payload = json_decode(file_get_contents('php://input'), true);
 
 if (empty($payload)) {
     file_put_contents('deploy.log', date('m/d/Y h:i:s a')." File accessed with no data\n", FILE_APPEND) or die('log fail');
-    die("<img src='http://loremflickr.com/320/240' />");
+    die();
 }
 
 if (isset($payload['push'])) {
