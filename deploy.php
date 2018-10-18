@@ -1,6 +1,5 @@
 <?php
-$repo_dir = '~/Code/svg';
-$web_root_dir = '~/project';
+$repo_dir = '~/project';
 $onbranch = 'master';
 
 $update = false;
